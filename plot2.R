@@ -1,0 +1,6 @@
+source("loadPowerData.R")
+power.data <- loadPowerData()
+power.data$Time <- strptime(power.data$Time, "%Y-%m-%d %H:%M:%S")
+with(power.data, plot(Time, Global_active_power, xlab="", ylab = "Global Active Power (killowatts)", pch=20, type="o", cex = 0.2))
+dev.copy(png, file = "plot2.png", width=480, height=480)
+dev.off()
